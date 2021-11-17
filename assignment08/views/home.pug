@@ -1,0 +1,16 @@
+extends index
+include mixins/video
+
+block content
+    header 
+        h1 Movies!
+        form(method="GET" action="/filter")
+            input(type="text" placeholder="Filter by year" name="year")
+            input(type="text" placeholder="Filter by rating" name="rating")
+            input(type="submit" value="Search")
+    br
+    div
+        each video in videos
+            +video(video)
+        else
+            span No videos found 

@@ -1,0 +1,11 @@
+extends index
+
+block content
+    div
+        h1 #{video.title}
+    div
+        span #{video.summary}
+    div
+        ul
+            each genre in video.genres
+                li= genre
