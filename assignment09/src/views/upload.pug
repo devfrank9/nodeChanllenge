@@ -1,0 +1,8 @@
+extends templates/layout.pug
+block content
+    h1 Add Movies
+    form(method="POST")
+        input(name="title" placeholder="title" type="text")
+        input(name="synopsis" placeholder="Synopsis" type="text")
+        input(name="genres" placeholder="Genres" type="text")
+        input(type="submit", value = "Add Movies")
