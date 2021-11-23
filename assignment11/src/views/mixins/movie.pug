@@ -1,0 +1,8 @@
+mixin movie(movie)
+    div
+        h4
+            a(href=`/movies/${movie.id}`)=movie.title
+        ul
+            li #{movie.summary}
+            li #{movie.year}
+            li #{movie.rating}/5

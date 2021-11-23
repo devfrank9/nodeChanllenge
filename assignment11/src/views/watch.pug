@@ -1,0 +1,11 @@
+extends base
+
+block content
+    h2=movie.title
+    span=movie.summary
+    ul
+        each genre in movie.genres
+            li=genre
+    a(href=`${movie.id}/edit`) Edit Movie &rarr;
+    br
+    a(href=`${movie.id}/delete`) Delete Movie &rarr;
