@@ -1,3 +1,4 @@
+import bcrypt from "bcrypt";
 import mongoose from "mongoose";
 
 /*
@@ -8,9 +9,21 @@ PLEASE FOLLOW THIS STEP
 WE NEED TO SHARE THE SAME DB SO NICO CAN CHECK OUT EVERYBODYS PROJECT.
 🚧🚧🚧🚧🚧🚧🚧🚧🚧🚧🚧
 */
-const YOUR_USERNAME = null;
+const YOUR_USERNAME = "devfrank";
 
-const UserSchema = mongoose.Schema({});
+const UserSchema = mongoose.Schema({
+  username: { type: String, required: true, unique: true },
+  name: { type: String, required: true },
+  password: { type: String },
+});
+
+UserSchema.pre("save", async function () {
+  console.log(this.password);
+  if (this.isModified("password")) {
+    this.password = await bcrypt.hash(this.password, 5);
+    console.log(this.password);
+  }
+});
 
 if (YOUR_USERNAME === null || typeof YOUR_USERNAME !== "string") {
   /*
